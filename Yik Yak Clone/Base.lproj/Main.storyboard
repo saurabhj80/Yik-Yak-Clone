@@ -18,6 +18,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AZj-T3-pm9" id="JTP-yv-PoX">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ur0-ju-mPI" kind="show" identifier="commentsSegue" id="GPJ-NV-IiA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -25,11 +28,128 @@
                             <outlet property="delegate" destination="Jul-Hm-BK2" id="w4E-hm-g1I"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Yik Yak" id="tFd-Jm-8dk"/>
+                    <navigationItem key="navigationItem" title="Yik Yak" id="tFd-Jm-8dk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9fd-G0-7EU">
+                            <connections>
+                                <action selector="postButtonPressed:" destination="Jul-Hm-BK2" id="FMo-VO-8Wb"/>
+                                <segue destination="DKb-gI-Prw" kind="presentation" identifier="postSegue" id="ddi-M6-HDo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fz-0O-wfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2786" y="316"/>
+        </scene>
+        <!--Comments Table View Controller-->
+        <scene sceneID="efO-wi-7ap">
+            <objects>
+                <tableViewController id="Ur0-ju-mPI" customClass="CommentsTableViewController" customModule="Yik_Yak_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UQI-jO-nr5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="dPC-sT-hBS">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dPC-sT-hBS" id="VHv-j1-Uba">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ur0-ju-mPI" id="WQk-kT-tKN"/>
+                            <outlet property="delegate" destination="Ur0-ju-mPI" id="fWJ-pm-9xA"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vvz-fZ-nks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3542" y="316"/>
+        </scene>
+        <!--Commenting View Controller-->
+        <scene sceneID="3fy-1G-KIs">
+            <objects>
+                <viewController storyboardIdentifier="commentingVC" id="ptz-67-6yj" customClass="CommentingViewController" customModule="Yik_Yak_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rab-n9-DIX"/>
+                        <viewControllerLayoutGuide type="bottom" id="g6V-K4-VdP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tM7-Qa-g62">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4j-aA-loX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p4j-aA-loX" firstAttribute="top" secondItem="tM7-Qa-g62" secondAttribute="top" id="5nh-G4-G0N"/>
+                            <constraint firstAttribute="trailing" secondItem="p4j-aA-loX" secondAttribute="trailing" id="7kb-oO-rjG"/>
+                            <constraint firstItem="p4j-aA-loX" firstAttribute="bottom" secondItem="g6V-K4-VdP" secondAttribute="top" id="T9k-Kr-pjD"/>
+                            <constraint firstItem="p4j-aA-loX" firstAttribute="leading" secondItem="tM7-Qa-g62" secondAttribute="leading" id="ohe-0K-eru"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sj_commentTextView" destination="p4j-aA-loX" id="Bjg-gC-4El"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sL-z7-LCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4206" y="335"/>
+        </scene>
+        <!--Compose-->
+        <scene sceneID="enV-1U-LuU">
+            <objects>
+                <viewController id="jof-mQ-LoS" customClass="ComposeViewController" customModule="Yik_Yak_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dez-5Q-9Mq"/>
+                        <viewControllerLayoutGuide type="bottom" id="u58-Zj-YS8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f29-h6-Sr4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vw-JR-Gsf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8vw-JR-Gsf" secondAttribute="trailing" id="pTT-vg-fmX"/>
+                            <constraint firstItem="8vw-JR-Gsf" firstAttribute="leading" secondItem="f29-h6-Sr4" secondAttribute="leading" id="uWk-O1-wsT"/>
+                            <constraint firstItem="8vw-JR-Gsf" firstAttribute="bottom" secondItem="u58-Zj-YS8" secondAttribute="top" id="v09-9g-dPd"/>
+                            <constraint firstItem="8vw-JR-Gsf" firstAttribute="top" secondItem="f29-h6-Sr4" secondAttribute="top" id="wR4-TD-PU3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Compose" id="Yhd-Il-hQx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vFo-5F-ClV">
+                            <connections>
+                                <action selector="dismissViewController:" destination="jof-mQ-LoS" id="EYt-em-oZT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="lxG-Ha-5g1">
+                            <connections>
+                                <action selector="sendPost:" destination="jof-mQ-LoS" id="pW0-nY-eGE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sj_composeTextView" destination="8vw-JR-Gsf" id="UkQ-Jq-pnM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RS6-4b-2sp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4367" y="-424"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7jh-YD-bPF">
@@ -48,6 +168,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfx-g3-FZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1974" y="316"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tc1-pA-OEb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DKb-gI-Prw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQp-oY-RUe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jof-mQ-LoS" kind="relationship" relationship="rootViewController" id="LZp-ey-NmM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xx9-sN-Quq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3555" y="-424"/>
         </scene>
     </scenes>
 </document>

@@ -21,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId(appKey, clientKey: clientKey)
         
+        if !(PFUser.currentUser() != nil) {
+            PFAnonymousUtils.logInWithBlock { (user, error) in
+                println(user)
+            }
+        }
+        
         return true
     }
 
