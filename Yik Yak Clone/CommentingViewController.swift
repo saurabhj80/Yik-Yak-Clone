@@ -9,28 +9,29 @@
 import UIKit
 
 protocol CommentingViewControllerDelegate: class {
-    
-    
     func pop()
     func reloadComments()
-    
 }
 
 
 class CommentingViewController: UIViewController {
 
+    // The post object
     var postObject: PFObject!
     
-    
+    // Delegate
     weak var delegate: CommentingViewControllerDelegate?
     
+    // text view
+    @IBOutlet weak var sj_commentTextView: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        // Add Observer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePostingComment:", name: postCommentNotification, object: nil)
         
+        // Right bar button item
         let item = UIBarButtonItem(title: "Post", style: .Done, target: self, action: "postComment")
         navigationItem.rightBarButtonItem = item
         
@@ -38,40 +39,23 @@ class CommentingViewController: UIViewController {
     
     // Post A comment
     func postComment() {
-        
         if count(sj_commentTextView.text) > 0 {
             Downloader.sharedDownloader.postingAComment(sj_commentTextView.text, post: postObject)
         }
-        
     }
     
     
+    // Notification SEL
     func handlePostingComment(notification: NSNotification) {
         
         if let success = notification.object as? Bool {
-            
             if success {
-                
                 delegate?.reloadComments()
-                
-                
             } else {
-                
-                
-                
+                // Set Alert
             }
-            
-            
         }
-        
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var sj_commentTextView: UITextView!
 
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>289E331A-4EFD-4A5C-8E16-F4A5501F86EE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Yik Yak Clone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>78F5F6DBB568A9D0FA9AA2FF04363094D62BB089</key>
+		<string>https://github.com/saurabhj80/Yik-Yak-Clone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Yik Yak Clone.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>78F5F6DBB568A9D0FA9AA2FF04363094D62BB089</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/saurabhj80/Yik-Yak-Clone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>78F5F6DBB568A9D0FA9AA2FF04363094D62BB089</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>78F5F6DBB568A9D0FA9AA2FF04363094D62BB089</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Yik%20Yak%20Clone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -10,10 +10,9 @@ import UIKit
 
 let reuseIdentifier = "Cell"
 
-class UserFeedTableViewController: UITableViewController, ComposeViewControllerDelegate {
+class UserFeedTableViewController: UITableViewController {
     
-    // Post Array
-    // Containing the feed
+    // Post Array: contains the posts based on the location
     private var posts: [PFObject]? {
         didSet {
             tableView.reloadData()
@@ -28,6 +27,8 @@ class UserFeedTableViewController: UITableViewController, ComposeViewControllerD
         
         // Add observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "queryFeeds:", name: queryNotification, object: nil)
+        
+        // Sizing Calculations
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -37,15 +38,10 @@ class UserFeedTableViewController: UITableViewController, ComposeViewControllerD
         posts = notification.object as? [PFObject]
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+    // Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        // Post View Controller
         if segue.identifier == "postSegue" {
             
             let nav = segue.destinationViewController as! UINavigationController
@@ -53,6 +49,7 @@ class UserFeedTableViewController: UITableViewController, ComposeViewControllerD
             composeVc.delegate = self
         }
         
+        // Commments View Controller
         if segue.identifier == "commentsSegue" {
             
             let vc = segue.destinationViewController as! CommentsTableViewController
@@ -64,18 +61,25 @@ class UserFeedTableViewController: UITableViewController, ComposeViewControllerD
             
         }
     }
+
+}
+
+// MARK: Compose View Controller Delegate
+extension UserFeedTableViewController: ComposeViewControllerDelegate {
     
     // Dismiss Compose VC
     func dismissComposeViewController(viewController: ComposeViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // Reload the table
     func reloadTableViewAfterPosting() {
         dismissViewControllerAnimated(true, completion: nil)
         Downloader.sharedDownloader.queryForPosts()
     }
+    
+    
 }
-
 
 // MARK: - Table view data source
 extension UserFeedTableViewController {
@@ -86,8 +90,6 @@ extension UserFeedTableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
         
         if let posts = posts {
             let object = posts[indexPath.row]

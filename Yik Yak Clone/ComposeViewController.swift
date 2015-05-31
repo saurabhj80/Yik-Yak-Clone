@@ -16,23 +16,17 @@ protocol ComposeViewControllerDelegate: class {
 
 class ComposeViewController: UIViewController {
     
-    // Delegate
+    // Has to be weak to prevent retain cycles
     weak var delegate: ComposeViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        // Add Observer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "posted:", name: postNotification, object: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+    // Notification SEL
     func posted(notification: NSNotification) {
         
         if let success = notification.object as? Bool {
@@ -49,8 +43,6 @@ class ComposeViewController: UIViewController {
             }
             
         }
-        
-        
     }
     
     @IBOutlet weak var sj_composeTextView: UITextView!

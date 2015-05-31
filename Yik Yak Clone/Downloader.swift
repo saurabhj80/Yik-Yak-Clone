@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Notification
 let queryNotification = "queryUserFeedNotification"
 let postNotification = "postNotification"
 let queryCommentNotification = "queryCommentNotification"
@@ -18,8 +19,8 @@ class Downloader: NSObject {
     // Singleton
     static let sharedDownloader = Downloader()
     
-    // Queries and returns the posts based on the locations
-    // of the user
+    // Queries and returns the posts based 
+    // on the locations of the user
     func queryForPosts() {
         
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in
@@ -49,6 +50,8 @@ class Downloader: NSObject {
         }
     }
     
+    // Query for the comments
+    // @param: the object for which to find the comments
     func queryForComments(object: PFObject) {
         
         
@@ -70,6 +73,9 @@ class Downloader: NSObject {
         
     }
     
+    // Func for posting the comment on Parse
+    // @param: text: the comment
+    // @param: post: the post for which the comment to be posted
     func postingAComment(text: String, post: PFObject) {
         
         let comment = PFObject(className: "Comments")
@@ -87,7 +93,8 @@ class Downloader: NSObject {
         
     }
     
-    
+    // Func for Posting
+    // @param: text: the post String
     func postFeed(text: String) {
         
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in

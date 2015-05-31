@@ -10,13 +10,10 @@ import UIKit
 
 class CommentsTableViewController: UITableViewController, CommentingViewControllerDelegate {
 
-    var postObject: PFObject! {
-        didSet {
-            //println(postObject)
-        }
-    }
+    // The post for which to find the comments
+    var postObject: PFObject!
     
-    
+    // Array containing comments for the postObject
     private var myComments: [PFObject]? {
         didSet {
             tableView.reloadData()
@@ -35,6 +32,7 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
         // Query for comments
         Downloader.sharedDownloader.queryForComments(postObject)
         
+        // Set Up the header view
         header_label = UILabel(frame: .zeroRect)
         header_label.text = postObject["post"] as? String
         header_label.sizeToFit()
@@ -45,12 +43,13 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
         
         tableView.tableHeaderView = header_label
         
-        
+        // Right Bar Button Item
         let barButtonItem = UIBarButtonItem(title: "Comments", style: .Done, target: self, action: "postComments")
         navigationItem.rightBarButtonItem = barButtonItem
         
     }
     
+    // SEL for the bar button item
     func postComments() {
         
         let vc = storyboard?.instantiateViewControllerWithIdentifier("commentingVC") as! CommentingViewController
@@ -61,6 +60,7 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
         
     }
     
+    // Commenting View Controller Delegate
     func pop() {
         navigationController?.popViewControllerAnimated(true)
     }
@@ -70,7 +70,7 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
         Downloader.sharedDownloader.queryForComments(postObject)
     }
     
-    
+    // notification SEL
     func handleComments(notification: NSNotification) {
         
         let comments = notification.object as? [PFObject]
@@ -78,16 +78,12 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
         if let comments = comments {
             myComments = comments
         }
-        
     }
-    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    // MARK: - Table view data source
+// MARK: - Table view data source
+extension CommentsTableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myComments?.count ?? 0
@@ -97,10 +93,7 @@ class CommentsTableViewController: UITableViewController, CommentingViewControll
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
-        // Configure the cell...
-
         if let myComments = myComments {
-            
             let comment = myComments[indexPath.row]
             cell.textLabel?.text = comment["text"] as? String
         }
