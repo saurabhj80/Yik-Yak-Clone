@@ -13,7 +13,6 @@ protocol CommentingViewControllerDelegate: class {
     func reloadComments()
 }
 
-
 class CommentingViewController: UIViewController {
 
     // The post object
@@ -39,7 +38,7 @@ class CommentingViewController: UIViewController {
     
     // Post A comment
     func postComment() {
-        if count(sj_commentTextView.text) > 0 {
+        if sj_commentTextView.text.characters.count > 0 {
             Downloader.sharedDownloader.postingAComment(sj_commentTextView.text, post: postObject)
         }
     }

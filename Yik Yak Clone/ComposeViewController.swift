@@ -53,7 +53,7 @@ class ComposeViewController: UIViewController {
     
     
     @IBAction func sendPost(sender: UIBarButtonItem) {
-        if count(sj_composeTextView.text) > 0 {
+        if sj_composeTextView.text.characters.count > 0 {
             Downloader.sharedDownloader.postFeed(sj_composeTextView.text)
         }
     }

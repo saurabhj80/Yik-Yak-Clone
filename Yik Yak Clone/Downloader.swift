@@ -8,6 +8,7 @@
 
 import UIKit
 
+// It is better to actually store all the strings in a struct
 // Notification
 let queryNotification = "queryUserFeedNotification"
 let postNotification = "postNotification"
@@ -62,7 +63,7 @@ class Downloader: NSObject {
             
             if let object = object {
                 
-                println(object)
+                print(object)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     NSNotificationCenter.defaultCenter().postNotificationName(queryCommentNotification, object: object)

@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Log in Anonymously
         if !(PFUser.currentUser() != nil) {
             PFAnonymousUtils.logInWithBlock { (user, error) in
-                println(user)
+                print(user)
             }
         }
         

@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6CEF161B1A476F00776512 /* Controller */,
-				1F6CEF151B1A476700776512 /* Model */,
+				1F6CEF151B1A476700776512 /* Manager */,
 				1F6CEEEB1B1A359100776512 /* Supporting Files */,
 			);
 			path = "Yik Yak Clone";
@@ -130,12 +130,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1F6CEF151B1A476700776512 /* Model */ = {
+		1F6CEF151B1A476700776512 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				1F6CEF131B1A457300776512 /* Downloader.swift */,
 			);
-			name = Model;
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		1F6CEF161B1A476F00776512 /* Controller */ = {
@@ -212,7 +212,9 @@
 		1F6CEEE01B1A359100776512 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Saurabh Jain";
 				TargetAttributes = {
 					1F6CEEE71B1A359100776512 = {
@@ -369,6 +371,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -437,8 +440,9 @@
 				INFOPLIST_FILE = "Yik Yak Clone/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/saurabhj80/Desktop/Yik Yak Clone/Yik Yak Clone/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Yik Yak Clone/BridgingHeader.h";
 			};
 			name = Debug;
 		};
@@ -450,8 +454,9 @@
 				INFOPLIST_FILE = "Yik Yak Clone/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/saurabhj80/Desktop/Yik Yak Clone/Yik Yak Clone/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Yik Yak Clone/BridgingHeader.h";
 			};
 			name = Release;
 		};
@@ -469,6 +474,7 @@
 				);
 				INFOPLIST_FILE = "Yik Yak CloneTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yik Yak Clone.app/Yik Yak Clone";
 			};
@@ -484,6 +490,7 @@
 				);
 				INFOPLIST_FILE = "Yik Yak CloneTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yik Yak Clone.app/Yik Yak Clone";
 			};
